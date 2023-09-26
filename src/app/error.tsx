@@ -1,7 +1,9 @@
+"use client";
+
 const Error = () => {
   return (
     <div>
-      <h1>Error ~ something went wrong</h1>
+      <h1>Error something went wrong</h1>
     </div>
   );
 };

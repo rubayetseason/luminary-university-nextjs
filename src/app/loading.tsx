@@ -1,9 +1,9 @@
-const Loading = () => {
-  return (
-    <div>
-      <h1>Loadingggggggg</h1>
-    </div>
-  );
-};
+import { Spin } from "antd";
+
+const Loading: React.FC = () => (
+  <>
+    <Spin size="large" />
+  </>
+);
 
 export default Loading;
