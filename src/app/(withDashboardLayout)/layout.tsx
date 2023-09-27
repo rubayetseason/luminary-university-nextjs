@@ -25,8 +25,26 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
         onCollapse={(collapsed, type) => {
           console.log(collapsed, type);
         }}
+        style={{
+          height: "100vh",
+          position: "sticky",
+          left: 0,
+          top: 0,
+          bottom: 0,
+        }}
       >
-        <div className="demo-logo-vertical" />
+        <div
+          style={{
+            color: "white",
+            fontSize: "1rem",
+            textAlign: "center",
+            fontWeight: "bold",
+            marginBottom: "1rem",
+            marginTop: "1rem",
+          }}
+        >
+          Luminary University
+        </div>
         <Menu
           theme="dark"
           mode="inline"
