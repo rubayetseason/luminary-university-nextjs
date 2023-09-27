@@ -1,12 +1,12 @@
 import type { MenuProps } from "antd";
 import {
-  ProfileOutlined,
   TableOutlined,
   AppstoreOutlined,
   ScheduleOutlined,
   BookOutlined,
   CreditCardOutlined,
   FileTextOutlined,
+  UserOutlined,
 } from "@ant-design/icons";
 import Link from "next/link";
 import { USER_ROLE } from "./role";
@@ -16,7 +16,7 @@ export const SidebarItems = (role: string) => {
     {
       label: "Profile",
       key: "profile",
-      icon: <ProfileOutlined />,
+      icon: <UserOutlined />,
       children: [
         {
           label: <Link href={`/${role}/profile`}>Account Profile</Link>,
@@ -47,7 +47,7 @@ export const SidebarItems = (role: string) => {
     ...defaultSidebarItems,
     ...commonAdminSidebarItems,
     {
-      label: "Manage academic",
+      label: "Manage Academic",
       key: "manage-academic",
       icon: <TableOutlined />,
       children: [
@@ -132,7 +132,7 @@ export const SidebarItems = (role: string) => {
       key: `/${role}/user`,
     },
     {
-      label: "Manage permission",
+      label: "Permissions",
       key: "manage-permission",
       icon: <AppstoreOutlined />,
       children: [
