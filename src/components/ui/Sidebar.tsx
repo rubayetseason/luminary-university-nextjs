@@ -7,7 +7,7 @@ import { SidebarItems } from "@/constants/sidebarItems";
 const { Sider } = Layout;
 
 const Sidebar = () => {
-  const role = USER_ROLE.SUPER_ADMIN;
+  const role = USER_ROLE.ADMIN;
 
   return (
     <Sider
