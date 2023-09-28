@@ -28,7 +28,7 @@ const FormInput = ({
 
   return (
     <>
-      <p style={{marginBottom: '4px'}}>{label ? label : null}</p>
+      <p style={{ marginBottom: "4px" }}>{label ? label : null}</p>
       <Controller
         control={control}
         name={name}
