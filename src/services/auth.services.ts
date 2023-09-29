@@ -15,3 +15,8 @@ export const getUserInfo = () => {
     return "";
   }
 };
+
+export const isLoggedIn = () => {
+  const authToken = getFromLocalStorage(authKey);
+  return !!authToken;
+};
