@@ -3,8 +3,9 @@ import React from "react";
 
 import { Layout, theme } from "antd";
 import BreadCrumb from "./BreadCrumb";
+import Header from "./Header";
 
-const { Header, Content, Footer } = Layout;
+const { Content, Footer } = Layout;
 
 const Contents = ({ children }: { children: React.ReactNode }) => {
   const {
@@ -15,7 +16,7 @@ const Contents = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <Layout>
-      <Header style={{ padding: 0, background: colorBgContainer }} />
+      <Header></Header>
       <div style={{ paddingLeft: "50px", paddingTop: "15px" }}>
         <BreadCrumb
           items={[
