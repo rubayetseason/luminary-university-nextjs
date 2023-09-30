@@ -1,16 +1,19 @@
-import { Spin } from "antd";
+import { Row, Space, Spin } from "antd";
 
-const Loading: React.FC = () => (
-  <div
-    style={{
-      minHeight: "100vh",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-    }}
-  >
-    <Spin size="large" />
-  </div>
-);
+const Loading = () => {
+  return (
+    <Row
+      justify="center"
+      align="middle"
+      style={{
+        height: "100vh",
+      }}
+    >
+      <Space>
+        <Spin tip="Loading" size="large"></Spin>
+      </Space>
+    </Row>
+  );
+};
 
 export default Loading;
