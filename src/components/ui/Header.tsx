@@ -53,7 +53,10 @@ const Header = () => {
         <Dropdown menu={{ items }}>
           <a>
             <Space wrap size={16}>
-              <Avatar icon={<UserOutlined />} />
+              <Avatar
+                style={{ border: "1px solid black" }}
+                icon={<UserOutlined />}
+              />
             </Space>
           </a>
         </Dropdown>
