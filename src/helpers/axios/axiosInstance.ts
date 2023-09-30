@@ -1,5 +1,5 @@
 import { authKey } from "@/constants/authKey";
-import { ResponseSuccessType } from "@/types";
+import { IGenericErrorResponse, ResponseSuccessType } from "@/types";
 import { getFromLocalStorage } from "@/utils/localStorage";
 import axios from "axios";
 const instance = axios.create();
@@ -37,9 +37,13 @@ instance.interceptors.response.use(
     return responseObject;
   },
   function (error) {
-    // Any status codes that falls outside the range of 2xx cause this function to trigger
+    const responseErrorObject: IGenericErrorResponse = {
+      statusCode: error?.response?.data?.statusCode || 500,
+      message: error?.response?.data?.message || "Something went wrong",
+      errorMessages: error?.response?.data?.message,
+    };
     // Do something with response error
-    return Promise.reject(error);
+    return responseErrorObject;
   }
 );
 
