@@ -2,6 +2,8 @@
 
 import BreadCrumb from "@/components/ui/BreadCrumb";
 import { getUserInfo } from "@/services/auth.services";
+import { Button } from "antd";
+import Link from "next/link";
 
 const ManageFacultyRoute = () => {
   const { role } = getUserInfo() as any;
@@ -19,7 +21,10 @@ const ManageFacultyRoute = () => {
           },
         ]}
       />
-      <h1>this is manage faculty route</h1>
+      <h1 style={{ margin: "10px 0" }}>Create faculty</h1>
+      <Link href="/super_admin/manage-faculty/create-faculty">
+        <Button type="primary">Create faculty</Button>
+      </Link>
     </div>
   );
 };

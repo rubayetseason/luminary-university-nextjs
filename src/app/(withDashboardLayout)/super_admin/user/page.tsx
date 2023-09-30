@@ -19,7 +19,7 @@ const ManageUserRoute = () => {
           },
         ]}
       />
-      <h1>this is manage user route</h1>
+      <h1>Manage user list</h1>
     </div>
   );
 };
