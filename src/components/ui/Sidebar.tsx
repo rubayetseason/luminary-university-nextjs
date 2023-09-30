@@ -1,13 +1,13 @@
 "use client";
 import React from "react";
 import { Layout, Menu } from "antd";
-import { USER_ROLE } from "@/constants/role";
 import { SidebarItems } from "@/constants/sidebarItems";
+import { getUserInfo } from "@/services/auth.services";
 
 const { Sider } = Layout;
 
 const Sidebar = () => {
-  const role = USER_ROLE.ADMIN;
+  const { role } = getUserInfo() as any;
 
   return (
     <Sider

@@ -6,7 +6,7 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Luminary University",
+  title: "Luminary University Portal",
   description: "Created by Rubayet Islam Season",
 };
 
