@@ -11,7 +11,7 @@ const BreadCrumb = ({ items }: { items: IBreadCrumbItem[] }) => {
   const breadCrumbItems = [
     {
       title: (
-        <Link href="/">
+        <Link href="/profile">
           <HomeOutlined />
         </Link>
       ),
