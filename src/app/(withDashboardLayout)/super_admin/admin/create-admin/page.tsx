@@ -35,7 +35,7 @@ const CreateAdminRoute = () => {
           },
         ]}
       />
-      <div style={{marginTop: '10px'}}>
+      <div style={{ marginTop: "10px" }}>
         <Form submitHandler={onSubmit}>
           <div
             style={{
