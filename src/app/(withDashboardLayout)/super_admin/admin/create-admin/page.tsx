@@ -7,7 +7,12 @@ import { getUserInfo } from "@/services/auth.services";
 import styles from "./createAdmin.module.css";
 import { Button } from "antd";
 import FormSelectField from "@/components/forms/FromSelect";
-import { departmentOptions, genderOptions } from "@/constants/formOptions";
+import {
+  bloodGroupOptions,
+  departmentOptions,
+  genderOptions,
+} from "@/constants/formOptions";
+import UploadImage from "@/components/forms/uploadImage";
 
 const CreateAdminRoute = () => {
   const { role } = getUserInfo() as any;
@@ -132,6 +137,114 @@ const CreateAdminRoute = () => {
                   label="Department"
                   placeholder="Select department role"
                 />
+              </div>
+              <div
+                style={{
+                  marginBottom: "10px",
+                }}
+              >
+                <UploadImage></UploadImage>
+              </div>
+            </div>
+          </div>
+          <div
+            style={{
+              marginBottom: "10px",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "18px",
+                marginBottom: "10px",
+                textDecoration: "underline",
+              }}
+            >
+              Basic Information
+            </p>
+            <div className={styles.parentDiv}>
+              <div
+                style={{
+                  marginBottom: "10px",
+                }}
+              >
+                {" "}
+                <FormInput
+                  type="email"
+                  name="admin.email"
+                  size="large"
+                  label="Email Address"
+                />
+              </div>
+              <div
+                style={{
+                  marginBottom: "10px",
+                }}
+              >
+                {" "}
+                <FormInput
+                  type="text"
+                  name="admin.contactNo"
+                  size="large"
+                  label="Contact No."
+                />
+              </div>
+              <div
+                style={{
+                  marginBottom: "10px",
+                }}
+              >
+                {" "}
+                <FormInput
+                  type="text"
+                  name="admin.emergencyContactNo"
+                  size="large"
+                  label="Emergency Contact No."
+                />
+              </div>
+              <div
+                style={{
+                  marginBottom: "10px",
+                }}
+              >
+                {" "}
+                <FormInput
+                  type="password"
+                  name="password"
+                  size="large"
+                  label="Password"
+                />
+              </div>
+              <div
+                style={{
+                  marginBottom: "10px",
+                }}
+              >
+                <FormSelectField
+                  size="large"
+                  name="admin.bloodGroup"
+                  options={bloodGroupOptions}
+                  label="Blood group"
+                  placeholder="Select"
+                />
+              </div>
+              <div
+                style={{
+                  marginBottom: "10px",
+                }}
+              >
+                <FormInput
+                  type="text"
+                  name="admin.designation"
+                  size="large"
+                  label="Designation"
+                />
+              </div>
+              <div
+                style={{
+                  marginBottom: "10px",
+                }}
+              >
+                <UploadImage></UploadImage>
               </div>
             </div>
           </div>
