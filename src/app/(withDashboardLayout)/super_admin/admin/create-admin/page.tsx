@@ -5,6 +5,9 @@ import FormInput from "@/components/forms/FormInput";
 import BreadCrumb from "@/components/ui/BreadCrumb";
 import { getUserInfo } from "@/services/auth.services";
 import styles from "./createAdmin.module.css";
+import { Button } from "antd";
+import FormSelectField from "@/components/forms/FromSelect";
+import { departmentOptions, genderOptions } from "@/constants/formOptions";
 
 const CreateAdminRoute = () => {
   const { role } = getUserInfo() as any;
@@ -39,8 +42,6 @@ const CreateAdminRoute = () => {
         <Form submitHandler={onSubmit}>
           <div
             style={{
-              border: "1px solid #d9d9d9",
-              padding: "15px",
               marginBottom: "10px",
             }}
           >
@@ -48,6 +49,7 @@ const CreateAdminRoute = () => {
               style={{
                 fontSize: "18px",
                 marginBottom: "10px",
+                textDecoration: "underline",
               }}
             >
               Admin Information
@@ -105,8 +107,37 @@ const CreateAdminRoute = () => {
                   label="Password"
                 />
               </div>
+              <div
+                style={{
+                  marginBottom: "10px",
+                }}
+              >
+                <FormSelectField
+                  size="large"
+                  name="admin.gender"
+                  options={genderOptions}
+                  label="Gender"
+                  placeholder="Select gender"
+                />
+              </div>
+              <div
+                style={{
+                  marginBottom: "10px",
+                }}
+              >
+                <FormSelectField
+                  size="large"
+                  name="admin.managementDepartment"
+                  options={departmentOptions}
+                  label="Department"
+                  placeholder="Select department role"
+                />
+              </div>
             </div>
           </div>
+          <Button htmlType="submit" type="primary">
+            Submit
+          </Button>
         </Form>
       </div>
     </div>

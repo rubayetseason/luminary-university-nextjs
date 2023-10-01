@@ -39,7 +39,6 @@ const FormInput = ({
               size={size}
               placeholder={placeholder}
               {...field}
-              style={{ borderRadius: 0 }}
               value={value ? value : field.value}
             />
           ) : (
@@ -48,7 +47,6 @@ const FormInput = ({
               size={size}
               placeholder={placeholder}
               {...field}
-              style={{ borderRadius: 0 }}
               value={value ? value : field.value}
             />
           )

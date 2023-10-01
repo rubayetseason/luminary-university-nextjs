@@ -17,7 +17,7 @@ const Contents = ({ children }: { children: React.ReactNode }) => {
       <Content style={{ margin: "0 15px" }}>
         <div
           style={{
-            padding: "24px 0px",
+            padding: "24px 10px",
             minHeight: 360,
             background: colorBgContainer,
           }}
