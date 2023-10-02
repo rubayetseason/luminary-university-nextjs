@@ -2,6 +2,7 @@
 import {
   acDepartmentOptions,
   acSemesterOptions,
+  bloodGroupOptions,
   facultyOptions,
   genderOptions,
 } from "@/constants/formOptions";
@@ -9,8 +10,9 @@ import FormInput from "../forms/FormInput";
 import FormSelectField from "../forms/FromSelect";
 import styles from "./formInfo.module.css";
 import UploadImage from "../forms/uploadImage";
+import FormDatePicker from "../forms/DatePicker";
 
-const StudentInfo = () => {
+const BasicInfo = () => {
   return (
     <div>
       <div
@@ -26,7 +28,7 @@ const StudentInfo = () => {
             textDecoration: "underline",
           }}
         >
-          Student Information
+          Basic Information
         </p>
         <div className={styles.parentDiv}>
           <div
@@ -36,10 +38,10 @@ const StudentInfo = () => {
           >
             {" "}
             <FormInput
-              type="text"
-              name="student.name.firstName"
+              type="email"
+              name="student.email"
+              label="Email Address"
               size="large"
-              label="First Name"
             />
           </div>
           <div
@@ -49,10 +51,9 @@ const StudentInfo = () => {
           >
             {" "}
             <FormInput
-              type="text"
-              name="student.name.middleName"
+              name="student.contactNo"
+              label="Contact No."
               size="large"
-              label="Middle Name"
             />
           </div>
           <div
@@ -62,10 +63,9 @@ const StudentInfo = () => {
           >
             {" "}
             <FormInput
-              type="text"
-              name="student.name.lastName"
+              name="student.emergencyContactNo"
+              label="Emergency Contact No."
               size="large"
-              label="Last Name"
             />
           </div>
           <div
@@ -74,11 +74,34 @@ const StudentInfo = () => {
             }}
           >
             {" "}
+            <FormDatePicker
+              name="student.dateOfBirth"
+              label="Date of Birth"
+              size="large"
+            />
+          </div>
+          <div
+            style={{
+              marginBottom: "10px",
+            }}
+          >
+            <FormSelectField
+              name="student.bloodGroup"
+              label="Blood Group"
+              options={bloodGroupOptions}
+              size="large"
+            />
+          </div>
+          <div
+            style={{
+              marginBottom: "10px",
+            }}
+          >
             <FormInput
-              type="password"
-              name="password"
+              type="text"
+              name="student.presentAddress"
+              label="Present address"
               size="large"
-              label="Password"
             />
           </div>
           <div
@@ -86,59 +109,12 @@ const StudentInfo = () => {
               marginBottom: "10px",
             }}
           >
-            <FormSelectField
+            <FormInput
+              type="text"
+              name="student.permanentAddress"
+              label="Permanent address"
               size="large"
-              name="student.academicSemester"
-              options={acSemesterOptions}
-              label="Semester"
-              placeholder="Select semester"
             />
-          </div>
-          <div
-            style={{
-              marginBottom: "10px",
-            }}
-          >
-            <FormSelectField
-              size="large"
-              name="student.academicFaculty"
-              options={facultyOptions}
-              label="Faculty"
-              placeholder="Select faculty"
-            />
-          </div>
-          <div
-            style={{
-              marginBottom: "10px",
-            }}
-          >
-            <FormSelectField
-              size="large"
-              name="student.academicDepartment"
-              options={acDepartmentOptions}
-              label="Department"
-              placeholder="Select academic department"
-            />
-          </div>
-          <div
-            style={{
-              marginBottom: "10px",
-            }}
-          >
-            <FormSelectField
-              size="large"
-              name="student.gender"
-              options={genderOptions}
-              label="Gender"
-              placeholder="Select gender"
-            />
-          </div>
-          <div
-            style={{
-              marginBottom: "10px",
-            }}
-          >
-            <UploadImage></UploadImage>
           </div>
         </div>
       </div>
@@ -146,4 +122,4 @@ const StudentInfo = () => {
   );
 };
 
-export default StudentInfo;
+export default BasicInfo;

@@ -210,7 +210,7 @@ const CreateAdminRoute = () => {
                 {" "}
                 <FormDatePicker
                   name="admin.dateOfBirth"
-                  label="Date of birth"
+                  label="Date of Birth"
                   size="large"
                 />
               </div>
@@ -247,7 +247,7 @@ const CreateAdminRoute = () => {
                 <FormInput
                   type="text"
                   name="admin.presentAddress"
-                  label="Present address"
+                  label="Present Address"
                   size="large"
                 />
               </div>
@@ -259,7 +259,7 @@ const CreateAdminRoute = () => {
                 <FormInput
                   type="text"
                   name="admin.permanentAddress"
-                  label="Permanent address"
+                  label="Permanent Address"
                   size="large"
                 />
               </div>

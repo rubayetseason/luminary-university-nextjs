@@ -64,35 +64,39 @@ export const bloodGroupOptions = [
 
 export const facultyOptions = [
   {
-    label: "Engineering",
-    value: "engineering",
-  },
-  {
     label: "Faculty of Science and Engineering",
     value: "Faculty of science and engineering",
+  },
+  {
+    label: "Faculty of Business Studies",
+    value: "Faculty of Business Studies",
+  },
+  {
+    label: "Faculty of Arts",
+    value: "Faculty of Arts",
   },
 ];
 export const acDepartmentOptions = [
   {
-    label: "CSE",
+    label: "Computer Science & Engineering",
     value: "cse",
   },
   {
-    label: "Software Engineering",
-    value: "software engineering",
+    label: "Electrical Engineering & Electronics",
+    value: "eee",
   },
 ];
 export const acSemesterOptions = [
   {
-    label: "Fall 2023",
-    value: "fall23",
+    label: "Fall",
+    value: "fall",
   },
   {
-    label: "Autumn 2023",
-    value: "autumn2023",
+    label: "Autumn",
+    value: "autumn",
   },
   {
-    label: "Summer 2023",
-    value: "summer23",
+    label: "Summer",
+    value: "summer",
   },
 ];

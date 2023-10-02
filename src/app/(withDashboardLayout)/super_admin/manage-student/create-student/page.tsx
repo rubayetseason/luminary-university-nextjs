@@ -1,4 +1,7 @@
 import StepperForm from "@/components/forms/StepperForm";
+import BasicInfo from "@/components/studentForm/BasicInfo";
+import GuardianInfo from "@/components/studentForm/GuardianInfo";
+import LocalGuardianInfo from "@/components/studentForm/LocalGuardianInfo";
 import StudentInfo from "@/components/studentForm/StudentInfo";
 
 const CreateStudentRoute = () => {
@@ -9,15 +12,15 @@ const CreateStudentRoute = () => {
     },
     {
       title: "Basic Information",
-      content: "Second-content",
+      content: <BasicInfo />,
     },
     {
       title: "Guardian Information",
-      content: "Last-content",
+      content: <GuardianInfo />,
     },
     {
       title: "Local Guardian Information",
-      content: "Last-content",
+      content: <LocalGuardianInfo />,
     },
   ];
 

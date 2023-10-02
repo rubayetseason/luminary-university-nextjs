@@ -10,7 +10,7 @@ import FormSelectField from "../forms/FromSelect";
 import styles from "./formInfo.module.css";
 import UploadImage from "../forms/uploadImage";
 
-const StudentInfo = () => {
+const LocalGuardianInfo = () => {
   return (
     <div>
       <div
@@ -146,4 +146,4 @@ const StudentInfo = () => {
   );
 };
 
-export default StudentInfo;
+export default LocalGuardianInfo;
