@@ -10,9 +10,11 @@ interface ISteps {
 
 interface IStepsProps {
   steps: ISteps[];
+  submitHandler: (el: any) => void;
+  navigateLink?: string;
 }
 
-const StepperForm = ({ steps }: IStepsProps) => {
+const StepperForm = ({ steps, submitHandler }: IStepsProps) => {
   const [current, setCurrent] = useState(0);
 
   const next = () => {
@@ -26,11 +28,19 @@ const StepperForm = ({ steps }: IStepsProps) => {
   const items = steps.map((item) => ({ key: item.title, title: item.title }));
 
   const methods = useForm();
+
+  const { handleSubmit, reset } = methods;
+
+  const handleStudentOnSubmit = (data: any) => {
+    submitHandler(data);
+    reset();
+  };
+
   return (
     <>
       <Steps current={current} items={items} />
       <FormProvider {...methods}>
-        <form>
+        <form onSubmit={handleSubmit(handleStudentOnSubmit)}>
           <div>{steps[current].content}</div>
           <div style={{ marginTop: 24 }}>
             {current < steps.length - 1 && (
@@ -41,6 +51,7 @@ const StepperForm = ({ steps }: IStepsProps) => {
             {current === steps.length - 1 && (
               <Button
                 type="primary"
+                htmlType="submit"
                 onClick={() => message.success("Processing complete!")}
               >
                 Done
