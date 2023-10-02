@@ -223,7 +223,7 @@ const CreateAdminRoute = () => {
                   size="large"
                   name="admin.bloodGroup"
                   options={bloodGroupOptions}
-                  label="Blood group"
+                  label="Blood Group"
                   placeholder="Select"
                 />
               </div>
