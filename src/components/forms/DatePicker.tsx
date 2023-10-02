@@ -25,8 +25,7 @@ const FormDatePicker = ({
 
   return (
     <div>
-      {label ? label : null}
-      <br />
+      <p style={{ marginBottom: "4px" }}>{label ? label : null}</p>
       <Controller
         name={name}
         control={control}
