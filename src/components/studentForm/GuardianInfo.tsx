@@ -26,7 +26,7 @@ const GuardianInfo = () => {
             textDecoration: "underline",
           }}
         >
-          Student Information
+          Guardian Information
         </p>
         <div className={styles.parentDiv}>
           <div
@@ -36,10 +36,9 @@ const GuardianInfo = () => {
           >
             {" "}
             <FormInput
-              type="text"
-              name="student.name.firstName"
+              name="student.guardian.fatherName"
+              label="Father Name"
               size="large"
-              label="First Name"
             />
           </div>
           <div
@@ -49,10 +48,9 @@ const GuardianInfo = () => {
           >
             {" "}
             <FormInput
-              type="text"
-              name="student.name.middleName"
+              name="student.guardian.fatherOccupation"
+              label="Father's Occupation"
               size="large"
-              label="Middle Name"
             />
           </div>
           <div
@@ -62,10 +60,9 @@ const GuardianInfo = () => {
           >
             {" "}
             <FormInput
-              type="text"
-              name="student.name.lastName"
+              name="student.guardian.fatherContactNo"
+              label="Father Contact No."
               size="large"
-              label="Last Name"
             />
           </div>
           <div
@@ -73,12 +70,10 @@ const GuardianInfo = () => {
               marginBottom: "10px",
             }}
           >
-            {" "}
             <FormInput
-              type="password"
-              name="password"
+              name="student.guardian.motherName"
+              label="Mother Name"
               size="large"
-              label="Password"
             />
           </div>
           <div
@@ -86,12 +81,10 @@ const GuardianInfo = () => {
               marginBottom: "10px",
             }}
           >
-            <FormSelectField
+            <FormInput
+              name="student.guardian.motherOccupation"
+              label="Mother's Occupation"
               size="large"
-              name="student.academicSemester"
-              options={acSemesterOptions}
-              label="Semester"
-              placeholder="Select semester"
             />
           </div>
           <div
@@ -99,12 +92,10 @@ const GuardianInfo = () => {
               marginBottom: "10px",
             }}
           >
-            <FormSelectField
+            <FormInput
+              name="student.guardian.motherContactNo"
+              label="Mother Contact No."
               size="large"
-              name="student.academicFaculty"
-              options={facultyOptions}
-              label="Faculty"
-              placeholder="Select faculty"
             />
           </div>
           <div
@@ -112,33 +103,11 @@ const GuardianInfo = () => {
               marginBottom: "10px",
             }}
           >
-            <FormSelectField
+            <FormInput
+              name="student.guardian.address"
+              label="Address"
               size="large"
-              name="student.academicDepartment"
-              options={acDepartmentOptions}
-              label="Department"
-              placeholder="Select academic department"
             />
-          </div>
-          <div
-            style={{
-              marginBottom: "10px",
-            }}
-          >
-            <FormSelectField
-              size="large"
-              name="student.gender"
-              options={genderOptions}
-              label="Gender"
-              placeholder="Select gender"
-            />
-          </div>
-          <div
-            style={{
-              marginBottom: "10px",
-            }}
-          >
-            <UploadImage></UploadImage>
           </div>
         </div>
       </div>
