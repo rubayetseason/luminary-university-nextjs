@@ -13,6 +13,7 @@ import {
   genderOptions,
 } from "@/constants/formOptions";
 import UploadImage from "@/components/forms/uploadImage";
+import FormDatePicker from "@/components/forms/DatePicker";
 
 const CreateAdminRoute = () => {
   const { role } = getUserInfo() as any;
@@ -207,11 +208,10 @@ const CreateAdminRoute = () => {
                 }}
               >
                 {" "}
-                <FormInput
-                  type="password"
-                  name="password"
+                <FormDatePicker
+                  name="admin.dateOfBirth"
+                  label="Date of birth"
                   size="large"
-                  label="Password"
                 />
               </div>
               <div
@@ -244,7 +244,24 @@ const CreateAdminRoute = () => {
                   marginBottom: "10px",
                 }}
               >
-                <UploadImage></UploadImage>
+                <FormInput
+                  type="text"
+                  name="admin.presentAddress"
+                  label="Present address"
+                  size="large"
+                />
+              </div>
+              <div
+                style={{
+                  marginBottom: "10px",
+                }}
+              >
+                <FormInput
+                  type="text"
+                  name="admin.permanentAddress"
+                  label="Permanent address"
+                  size="large"
+                />
               </div>
             </div>
           </div>
