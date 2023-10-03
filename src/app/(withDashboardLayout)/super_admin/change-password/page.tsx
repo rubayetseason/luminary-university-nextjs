@@ -3,7 +3,9 @@
 import Form from "@/components/forms/Form";
 import FormInput from "@/components/forms/FormInput";
 import BreadCrumb from "@/components/ui/BreadCrumb";
+import { changePasswordSchema } from "@/schemas/changePasswordSchema";
 import { getUserInfo } from "@/services/auth.services";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { Button } from "antd";
 
 const ChangePasswordRoute = () => {
@@ -34,7 +36,10 @@ const ChangePasswordRoute = () => {
       <div
         style={{ margin: "100px 0", display: "flex", justifyContent: "center" }}
       >
-        <Form submitHandler={onSubmit}>
+        <Form
+          submitHandler={onSubmit}
+          resolver={yupResolver(changePasswordSchema)}
+        >
           <h2 style={{ marginBottom: "10px" }}>Reset Password</h2>
           <div style={{ margin: "5px 0" }}>
             <FormInput
