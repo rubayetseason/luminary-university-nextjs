@@ -1,7 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, message, Steps } from "antd";
 import { FormProvider, useForm } from "react-hook-form";
+import { getFromLocalStorage, setToLocalStorage } from "@/utils/localStorage";
 
 interface ISteps {
   title: string;
@@ -14,7 +15,15 @@ interface IStepsProps {
 }
 
 const StepperForm = ({ steps, submitHandler }: IStepsProps) => {
-  const [current, setCurrent] = useState(0);
+  const [current, setCurrent] = useState<number>(
+    getFromLocalStorage("step")
+      ? Number(JSON.parse(getFromLocalStorage("step") as string).step)
+      : 0
+  );
+
+  useEffect(() => {
+    setToLocalStorage("step", JSON.stringify({ step: current }));
+  }, [current]);
 
   const next = () => {
     setCurrent(current + 1);
