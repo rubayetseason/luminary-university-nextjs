@@ -21,9 +21,9 @@ const ManageDepartmentRoute = () => {
           },
         ]}
       />
-      <h1 style={{ margin: "10px 0" }}>Create department</h1>
+      <h1 style={{ margin: "10px 0" }}>Department list</h1>
       <Link href="/super_admin/department/create-department">
-        <Button type="primary">Create admin</Button>
+        <Button type="primary">Create department</Button>
       </Link>
     </div>
   );
