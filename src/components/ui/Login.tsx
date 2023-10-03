@@ -5,7 +5,7 @@ import Form from "@/components/forms/Form";
 import styles from "../../app/page.module.css";
 import FormInput from "@/components/forms/FormInput";
 import { SubmitHandler } from "react-hook-form";
-import { Button } from "antd";
+import { Button, message } from "antd";
 import { useUserLoginMutation } from "@/redux/api/authApi";
 import { storeUserInfo } from "@/services/auth.services";
 import { useRouter } from "next/navigation";
@@ -23,6 +23,7 @@ export default function Login() {
     try {
       const res = await userLogin({ ...data }).unwrap();
       if (res?.accessToken) {
+        message.success("User login successful");
         router.push("/profile");
       }
       storeUserInfo({ accessToken: res?.accessToken });
