@@ -14,6 +14,8 @@ import {
 } from "@/constants/formOptions";
 import UploadImage from "@/components/forms/uploadImage";
 import FormDatePicker from "@/components/forms/DatePicker";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { adminSchema } from "@/schemas/adminSchema";
 
 const CreateAdminRoute = () => {
   const { role } = getUserInfo() as any;
@@ -45,7 +47,7 @@ const CreateAdminRoute = () => {
         ]}
       />
       <div style={{ marginTop: "10px" }}>
-        <Form submitHandler={onSubmit}>
+        <Form submitHandler={onSubmit} resolver={yupResolver(adminSchema)}>
           <div
             style={{
               marginBottom: "10px",
