@@ -54,7 +54,7 @@ const Header = () => {
           <a>
             <Space wrap size={16}>
               <Avatar
-                style={{ border: "1px solid black" }}
+                style={{ border: "1px solid lightgrey" }}
                 icon={<UserOutlined />}
               />
             </Space>
