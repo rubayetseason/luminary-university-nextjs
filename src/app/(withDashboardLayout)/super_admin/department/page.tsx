@@ -25,6 +25,8 @@ const ManageDepartmentRoute = () => {
       <Link href="/super_admin/department/create-department">
         <Button type="primary">Create department</Button>
       </Link>
+      {/* department table */}
+      <div></div>
     </div>
   );
 };
