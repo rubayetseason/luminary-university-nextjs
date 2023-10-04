@@ -3,17 +3,25 @@
 import Form from "@/components/forms/Form";
 import FormInput from "@/components/forms/FormInput";
 import BreadCrumb from "@/components/ui/BreadCrumb";
+import { useAddDepartmentMutation } from "@/redux/api/manageDepartmentApi";
 import { getUserInfo } from "@/services/auth.services";
-import { Button } from "antd";
+import { Button, message } from "antd";
 
 const CreateDepartmentPage = () => {
   const { role } = getUserInfo() as any;
 
+  //rtkQuery work
+  const [addDepartment] = useAddDepartmentMutation();
+
   const onSubmit = async (data: any) => {
+    message.loading("Creating department...");
     try {
       console.log(data);
+      await addDepartment(data);
+      message.success("Department created successfully");
     } catch (err: any) {
       console.error(err.message);
+      message.error(err.message);
     }
   };
   return (
