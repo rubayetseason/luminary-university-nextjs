@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { Table } from "antd";
 
 type ITableProps = {
