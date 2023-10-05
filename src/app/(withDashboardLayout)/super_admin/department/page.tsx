@@ -12,7 +12,6 @@ const ManageDepartmentRoute = () => {
   const { role } = getUserInfo() as any;
 
   //data fetch
-
   const query: Record<string, any> = {};
   const [page, setPage] = useState<number>(1);
   const [size, setSize] = useState<number>(10);

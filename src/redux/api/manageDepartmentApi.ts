@@ -18,6 +18,7 @@ export const managementDepartmentApi = baseApi.injectEndpoints({
           meta,
         };
       },
+
       //for caching data --> name same with tagtypes
       providesTags: [tagTypes.manageDepartment],
     }),

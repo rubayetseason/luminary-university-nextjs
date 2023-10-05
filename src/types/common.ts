@@ -20,6 +20,7 @@ export type IGenericErrorMessage = {
   message: string;
 };
 
+//schema types
 export interface IManageDepartments {
   id: string;
   title: string;
