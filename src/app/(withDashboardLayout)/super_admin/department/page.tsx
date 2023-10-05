@@ -7,6 +7,13 @@ import { getUserInfo } from "@/services/auth.services";
 import { Button } from "antd";
 import Link from "next/link";
 import { useState } from "react";
+import {
+  DeleteOutlined,
+  EditOutlined,
+  EyeOutlined,
+  ReloadOutlined,
+} from "@ant-design/icons";
+import dayjs from "dayjs";
 
 const ManageDepartmentRoute = () => {
   const { role } = getUserInfo() as any;
@@ -25,7 +32,63 @@ const ManageDepartmentRoute = () => {
   query["sortOrder"] = sortOrder;
 
   const { data, isLoading } = useDepartmentsQuery({ ...query });
-  const { departments, meta } = data;
+
+  const departments = data?.departments;
+  const meta = data?.meta;
+
+  const onPaginationChange = (page: number, pageSize: number) => {
+    console.log("Page:", page, "PageSize:", pageSize);
+    setPage(page);
+    setSize(pageSize);
+  };
+  const onTableChange = (pagination: any, filter: any, sorter: any) => {
+    const { order, field } = sorter;
+    setSortBy(field as string);
+    setSortOrder(order === "ascend" ? "asc" : "desc");
+  };
+
+  const resetFilters = () => {
+    setSortBy("");
+    setSortOrder("");
+    setSearchTerm("");
+  };
+
+  const columns = [
+    {
+      title: "Title",
+      dataIndex: "title",
+    },
+    {
+      title: "CreatedAt",
+      dataIndex: "createdAt",
+      render: function (data: any) {
+        return data && dayjs(data).format("MMM D, YYYY hh:mm A");
+      },
+      sorter: true,
+    },
+    {
+      title: "Action",
+      render: function (data: any) {
+        return (
+          <>
+            <Link href={`/super_admin/department/edit/${data?.id}`}>
+              <Button
+                style={{
+                  margin: "0px 5px",
+                }}
+                type="primary"
+              >
+                <EditOutlined />
+              </Button>
+            </Link>
+            <Button type="primary" danger>
+              <DeleteOutlined />
+            </Button>
+          </>
+        );
+      },
+    },
+  ];
 
   return (
     <div>
@@ -50,9 +113,9 @@ const ManageDepartmentRoute = () => {
         <ReusableTable
           loading={isLoading}
           columns={columns}
-          dataSource={tableData}
-          pageSize={5}
-          totalPages={10}
+          dataSource={departments}
+          pageSize={size}
+          totalPages={meta?.total}
           showSizeChanger={true}
           onPaginationChange={onPaginationChange}
           onTableChange={onTableChange}
