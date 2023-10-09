@@ -7,18 +7,29 @@ import { getUserInfo } from "@/services/auth.services";
 import styles from "./createAdmin.module.css";
 import { Button } from "antd";
 import FormSelectField from "@/components/forms/FromSelect";
-import {
-  bloodGroupOptions,
-  departmentOptions,
-  genderOptions,
-} from "@/constants/formOptions";
+import { bloodGroupOptions, genderOptions } from "@/constants/formOptions";
 import UploadImage from "@/components/forms/uploadImage";
 import FormDatePicker from "@/components/forms/DatePicker";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { adminSchema } from "@/schemas/adminSchema";
+import { useDepartmentsQuery } from "@/redux/api/manageDepartmentApi";
+import { IManageDepartments } from "@/types";
 
 const CreateAdminRoute = () => {
   const { role } = getUserInfo() as any;
+
+  const { data, isLoading } = useDepartmentsQuery({ limit: 20, page: 1 });
+  //@ts-ignore
+  const departments: IManageDepartments[] = data?.departments;
+
+  const departmentOptions =
+    departments &&
+    departments.map((department) => {
+      return {
+        label: department?.title,
+        value: department?.id,
+      };
+    });
 
   const onSubmit = async (data: any) => {
     try {
