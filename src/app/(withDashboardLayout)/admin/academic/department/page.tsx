@@ -1,8 +1,5 @@
 "use client";
-import {
-  DeleteOutlined,
-  ReloadOutlined,
-} from "@ant-design/icons";
+import { DeleteOutlined, ReloadOutlined } from "@ant-design/icons";
 
 import { Button, Input, message } from "antd";
 import Link from "next/link";
@@ -110,7 +107,6 @@ const AcademicDepartmentPage = () => {
     setSortOrder("");
     setSearchTerm("");
   };
-
   return (
     <div>
       <BreadCrumb
