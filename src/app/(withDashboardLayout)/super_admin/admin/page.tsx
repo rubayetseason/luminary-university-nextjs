@@ -165,6 +165,7 @@ const ManageAdminRoute = () => {
           onPaginationChange={onPaginationChange}
           onTableChange={onTableChange}
           showPagination={true}
+          scroll={{ x: 900 }}
         />
       </div>
     </div>
