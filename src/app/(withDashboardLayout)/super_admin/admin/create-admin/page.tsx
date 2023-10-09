@@ -5,7 +5,7 @@ import FormInput from "@/components/forms/FormInput";
 import BreadCrumb from "@/components/ui/BreadCrumb";
 import { getUserInfo } from "@/services/auth.services";
 import styles from "./createAdmin.module.css";
-import { Button } from "antd";
+import { Button, message } from "antd";
 import FormSelectField from "@/components/forms/FromSelect";
 import { bloodGroupOptions, genderOptions } from "@/constants/formOptions";
 import UploadImage from "@/components/forms/uploadImage";
@@ -14,10 +14,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { adminSchema } from "@/schemas/adminSchema";
 import { useDepartmentsQuery } from "@/redux/api/manageDepartmentApi";
 import { IManageDepartments } from "@/types";
+import { useAddAdminWithFormDataMutation } from "@/redux/api/adminApi";
 
 const CreateAdminRoute = () => {
   const { role } = getUserInfo() as any;
 
+  const [addAdminWithFormData] = useAddAdminWithFormDataMutation();
   const { data } = useDepartmentsQuery({ limit: 20, page: 1 });
   //@ts-ignore
   const departments: IManageDepartments[] = data?.departments;
@@ -31,11 +33,24 @@ const CreateAdminRoute = () => {
       };
     });
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (values: any) => {
+    //values has password, adminInfo, file --> set all in obj
+    const obj = { ...values };
+    //take file sperately
+    const file = obj["file"];
+    //delete file from obj
+    delete obj["file"];
+    const data = JSON.stringify(obj);
+    //append everything in formData
+    const formData = new FormData();
+    formData.append("file", file as Blob);
+    formData.append("data", data);
+    message.loading("Creating admin...");
     try {
-      console.log(data);
-    } catch (error) {
-      console.error(error);
+      await addAdminWithFormData(formData);
+      message.success("Admin created successfully");
+    } catch (err: any) {
+      console.error(err.message);
     }
   };
 

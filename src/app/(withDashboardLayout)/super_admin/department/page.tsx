@@ -24,7 +24,7 @@ const ManageDepartmentRoute = () => {
 
   const deleteHandler = async (id: string) => {
     try {
-      message.success("Deleting...");
+      message.loading("Deleting...");
       await deleteDepartment(id);
       message.success("Department deleted successfully");
     } catch (err: any) {

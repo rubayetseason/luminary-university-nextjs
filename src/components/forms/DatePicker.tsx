@@ -2,7 +2,7 @@ import { DatePicker, DatePickerProps } from "antd";
 import { Controller, useFormContext } from "react-hook-form";
 import dayjs, { Dayjs } from "dayjs";
 
-type UMDatePikerProps = {
+type IDatePickerProps = {
   onChange?: (valOne: Dayjs | null, valTwo: string) => void;
   name: string;
   label?: string;
@@ -15,7 +15,7 @@ const FormDatePicker = ({
   label,
   onChange,
   size = "large",
-}: UMDatePikerProps) => {
+}: IDatePickerProps) => {
   const { control, setValue } = useFormContext();
 
   const handleOnChange: DatePickerProps["onChange"] = (date, dateString) => {

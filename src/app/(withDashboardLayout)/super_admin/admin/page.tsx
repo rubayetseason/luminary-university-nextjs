@@ -94,7 +94,7 @@ const ManageAdminRoute = () => {
         return (
           <>
             <Link href={`/super_admin/admin/details/${data.id}`}>
-              <Button onClick={() => console.log(data)} type="primary">
+              <Button onClick={() => console.log(data)}>
                 <EyeOutlined />
               </Button>
             </Link>
@@ -165,7 +165,7 @@ const ManageAdminRoute = () => {
           onPaginationChange={onPaginationChange}
           onTableChange={onTableChange}
           showPagination={true}
-          scroll={{ x: 900 }}
+          scroll={{ x: 1000 }}
         />
       </div>
     </div>
