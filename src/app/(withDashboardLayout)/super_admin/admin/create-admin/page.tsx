@@ -18,7 +18,7 @@ import { IManageDepartments } from "@/types";
 const CreateAdminRoute = () => {
   const { role } = getUserInfo() as any;
 
-  const { data, isLoading } = useDepartmentsQuery({ limit: 20, page: 1 });
+  const { data } = useDepartmentsQuery({ limit: 20, page: 1 });
   //@ts-ignore
   const departments: IManageDepartments[] = data?.departments;
 
@@ -157,7 +157,7 @@ const CreateAdminRoute = () => {
                   marginBottom: "10px",
                 }}
               >
-                <UploadImage></UploadImage>
+                <UploadImage name="file"></UploadImage>
               </div>
             </div>
           </div>
