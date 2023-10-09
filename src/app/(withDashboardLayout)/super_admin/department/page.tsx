@@ -4,7 +4,7 @@ import BreadCrumb from "@/components/ui/BreadCrumb";
 import ReusableTable from "@/components/ui/ReusableTable";
 import { useDepartmentsQuery } from "@/redux/api/manageDepartmentApi";
 import { getUserInfo } from "@/services/auth.services";
-import { Button } from "antd";
+import { Button, Input } from "antd";
 import Link from "next/link";
 import { useState } from "react";
 import {
@@ -30,6 +30,7 @@ const ManageDepartmentRoute = () => {
   query["page"] = page;
   query["sortBy"] = sortBy;
   query["sortOrder"] = sortOrder;
+  query["searchTerm"] = searchTerm;
 
   const { data, isLoading } = useDepartmentsQuery({ ...query });
 
@@ -108,6 +109,16 @@ const ManageDepartmentRoute = () => {
       <Link href="/super_admin/department/create-department">
         <Button type="primary">Create department</Button>
       </Link>
+      <div style={{ margin: "10px 0px" }}>
+        {/* search field */}
+        <Input
+          type="text"
+          size="middle"
+          placeholder="Search..."
+          style={{ width: "60%" }}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        ></Input>
+      </div>
       {/* department table */}
       <div>
         <ReusableTable
