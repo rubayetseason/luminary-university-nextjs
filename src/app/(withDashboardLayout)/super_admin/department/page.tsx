@@ -80,7 +80,7 @@ const ManageDepartmentRoute = () => {
       render: function (data: any) {
         return (
           <>
-            <Link href={`/super_admin/department/edit/${data?.id}`}>
+            <Link href={`/super_admin/department/update/${data?.id}`}>
               <Button
                 style={{
                   margin: "0px 5px",

@@ -32,8 +32,31 @@ export const managementDepartmentApi = baseApi.injectEndpoints({
       //for caching data --> name same with tagtypes
       invalidatesTags: [tagTypes.manageDepartment],
     }),
+
+    // get single department by id
+    department: build.query({
+      query: (id) => ({
+        url: `${MANAGE_DEPARTMENT_URL}/${id}`,
+        method: "GET",
+      }),
+      providesTags: [tagTypes.manageDepartment],
+    }),
+
+    // update single department by id
+    updateDepartment: build.mutation({
+      query: (data) => ({
+        url: `${MANAGE_DEPARTMENT_URL}/${data.id}`,
+        method: "PATCH",
+        data: data.body,
+      }),
+      invalidatesTags: [tagTypes.manageDepartment],
+    }),
   }),
 });
 
-export const { useDepartmentsQuery, useAddDepartmentMutation } =
-  managementDepartmentApi;
+export const {
+  useDepartmentsQuery,
+  useAddDepartmentMutation,
+  useDepartmentQuery,
+  useUpdateDepartmentMutation,
+} = managementDepartmentApi;
