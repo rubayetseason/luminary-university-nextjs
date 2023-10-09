@@ -118,13 +118,12 @@ const ManageDepartmentRoute = () => {
           style={{ width: "60%" }}
           onChange={(e) => setSearchTerm(e.target.value)}
         ></Input>
-        {sortOrder ||
-          sortBy ||
-          (searchTerm && (
-            <Button onClick={resetFilters} danger style={{ margin: "0px 5px" }}>
-              <ReloadOutlined />
-            </Button>
-          ))}
+
+        {(sortBy || sortOrder || searchTerm) && (
+          <Button onClick={resetFilters} danger style={{ margin: "0px 5px" }}>
+            <ReloadOutlined />
+          </Button>
+        )}
       </div>
       {/* department table */}
       <div>
