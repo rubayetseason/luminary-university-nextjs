@@ -2,9 +2,12 @@
 
 import BreadCrumb from "@/components/ui/BreadCrumb";
 import ReusableTable from "@/components/ui/ReusableTable";
-import { useDepartmentsQuery } from "@/redux/api/manageDepartmentApi";
+import {
+  useDeleteDepartmentMutation,
+  useDepartmentsQuery,
+} from "@/redux/api/manageDepartmentApi";
 import { getUserInfo } from "@/services/auth.services";
-import { Button, Input } from "antd";
+import { Button, Input, message } from "antd";
 import Link from "next/link";
 import { useState } from "react";
 import {
@@ -17,6 +20,17 @@ import { useDebounced } from "@/hooks/hooks";
 
 const ManageDepartmentRoute = () => {
   const { role } = getUserInfo() as any;
+  const [deleteDepartment] = useDeleteDepartmentMutation();
+
+  const deleteHandler = async (id: string) => {
+    try {
+      message.success("Deleting...");
+      await deleteDepartment(id);
+      message.success("Department deleted successfully");
+    } catch (err: any) {
+      message.error(err.message);
+    }
+  };
 
   //data fetch
   const query: Record<string, any> = {};
@@ -90,7 +104,11 @@ const ManageDepartmentRoute = () => {
                 <EditOutlined />
               </Button>
             </Link>
-            <Button type="primary" danger>
+            <Button
+              type="primary"
+              danger
+              onClick={() => deleteHandler(data?.id)}
+            >
               <DeleteOutlined />
             </Button>
           </>
