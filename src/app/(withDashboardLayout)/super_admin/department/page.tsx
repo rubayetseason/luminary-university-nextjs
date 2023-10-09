@@ -10,10 +10,10 @@ import { useState } from "react";
 import {
   DeleteOutlined,
   EditOutlined,
-  EyeOutlined,
   ReloadOutlined,
 } from "@ant-design/icons";
 import dayjs from "dayjs";
+import { useDebounced } from "@/hooks/hooks";
 
 const ManageDepartmentRoute = () => {
   const { role } = getUserInfo() as any;
@@ -30,7 +30,15 @@ const ManageDepartmentRoute = () => {
   query["page"] = page;
   query["sortBy"] = sortBy;
   query["sortOrder"] = sortOrder;
-  query["searchTerm"] = searchTerm;
+
+  const debouncedTerm = useDebounced({
+    searchQuery: searchTerm,
+    delay: 1000,
+  });
+
+  if (debouncedTerm) {
+    query["searchTerm"] = debouncedTerm;
+  }
 
   const { data, isLoading } = useDepartmentsQuery({ ...query });
 
