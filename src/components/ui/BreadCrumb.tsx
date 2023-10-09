@@ -19,7 +19,9 @@ const BreadCrumb = ({ items }: { items: IBreadCrumbItem[] }) => {
     ...items.map((item) => {
       return {
         title: item.link ? (
-          <Link href={item.link}>{item.label}</Link>
+          <Link href={item.link}>
+            {item.label}
+          </Link>
         ) : (
           <span>{item.label}</span>
         ),
