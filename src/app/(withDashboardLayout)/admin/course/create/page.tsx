@@ -2,6 +2,8 @@
 
 import Form from "@/components/forms/Form";
 import FormInput from "@/components/forms/FormInput";
+import FormMultiSelectField from "@/components/forms/FormMultiSelect";
+import { SelectOptions } from "@/components/forms/FromSelect";
 import BreadCrumb from "@/components/ui/BreadCrumb";
 import { useAddCourseMutation, useCoursesQuery } from "@/redux/api/courseApi";
 import { Button, message } from "antd";
@@ -12,25 +14,25 @@ const CreateCoursePage = () => {
   const { data, isLoading } = useCoursesQuery({ limit: 10, page: 1 });
 
   const courses = data?.courses;
-  //   const coursesOptions = courses?.map((course) => {
-  //     return {
-  //       label: course?.title,
-  //       value: course?.id,
-  //     };
-  //   });
+  const coursesOptions = courses?.map((course) => {
+    return {
+      label: course?.title,
+      value: course?.id,
+    };
+  });
 
   const onSubmit = async (data: any) => {
     data.credits = parseInt(data?.credits);
 
-    // const coursePreRequisitesOptions = data?.coursePreRequisites?.map(
-    //   (id: string) => {
-    //     return {
-    //       courseId: id,
-    //     };
-    //   }
-    // );
+    const coursePreRequisitesOptions = data?.preRequisiteCourses?.map(
+      (id: string) => {
+        return {
+          courseId: id,
+        };
+      }
+    );
 
-    // data.coursePreRequisites = coursePreRequisitesOptions;
+    data.preRequisiteCourses = coursePreRequisitesOptions;
 
     message.loading("Creating...");
     try {
@@ -63,6 +65,13 @@ const CreateCoursePage = () => {
         </div>
         <div style={{ margin: "10px 0px" }}>
           <FormInput name="credits" label="Course credits" />
+        </div>
+        <div style={{ margin: "10px 0px" }}>
+          <FormMultiSelectField
+            options={coursesOptions as SelectOptions[]}
+            name="preRequisiteCourses"
+            label="Prerequisite courses"
+          ></FormMultiSelectField>
         </div>
 
         <Button type="primary" htmlType="submit" style={{ margin: "10px 0px" }}>
