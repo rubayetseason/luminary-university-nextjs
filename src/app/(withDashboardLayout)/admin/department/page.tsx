@@ -89,32 +89,6 @@ const ManageDepartmentRoute = () => {
       },
       sorter: true,
     },
-    {
-      title: "Action",
-      render: function (data: any) {
-        return (
-          <>
-            <Link href={`/super_admin/department/update/${data?.id}`}>
-              <Button
-                style={{
-                  margin: "0px 5px",
-                }}
-                type="primary"
-              >
-                <EditOutlined />
-              </Button>
-            </Link>
-            <Button
-              type="primary"
-              danger
-              onClick={() => deleteHandler(data?.id)}
-            >
-              <DeleteOutlined />
-            </Button>
-          </>
-        );
-      },
-    },
   ];
 
   return (
@@ -132,7 +106,7 @@ const ManageDepartmentRoute = () => {
         ]}
       />
       <h1 style={{ margin: "10px 0" }}>Department list</h1>
-      <Link href="/super_admin/department/create-department">
+      <Link href="/admin/department/create-department">
         <Button type="primary">Create department</Button>
       </Link>
       <div style={{ margin: "10px 0px" }}>
