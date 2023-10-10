@@ -1,19 +1,18 @@
 "use client";
-import { DeleteOutlined, ReloadOutlined } from "@ant-design/icons";
+import BreadCrumb from "@/components/ui/BreadCrumb";
+import ReusableTable from "@/components/ui/ReusableTable";
+import { useDebounced } from "@/hooks/hooks";
+import { useDeleteRoomMutation, useRoomsQuery } from "@/redux/api/roomApi";
+import {
+  DeleteOutlined,
+  EditOutlined,
+  ReloadOutlined,
+} from "@ant-design/icons";
 import { Button, Input, message } from "antd";
 import Link from "next/link";
 import { useState } from "react";
 
-import dayjs from "dayjs";
-import {
-  useBuildingsQuery,
-  useDeleteBuildingMutation,
-} from "@/redux/api/buildingApi";
-import { useDebounced } from "@/hooks/hooks";
-import BreadCrumb from "@/components/ui/BreadCrumb";
-import ReusableTable from "@/components/ui/ReusableTable";
-
-const ManageBuildingPage = () => {
+const RoomPage = () => {
   const query: Record<string, any> = {};
 
   const [page, setPage] = useState<number>(1);
@@ -21,7 +20,7 @@ const ManageBuildingPage = () => {
   const [sortBy, setSortBy] = useState<string>("");
   const [sortOrder, setSortOrder] = useState<string>("");
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const [deleteBuilding] = useDeleteBuildingMutation();
+  const [deleteRoom] = useDeleteRoomMutation();
 
   query["limit"] = size;
   query["page"] = page;
@@ -37,16 +36,18 @@ const ManageBuildingPage = () => {
   if (!!debouncedTerm) {
     query["searchTerm"] = debouncedTerm;
   }
-  const { data, isLoading } = useBuildingsQuery({ ...query });
+  const { data, isLoading } = useRoomsQuery({ ...query });
 
-  const buildings = data?.buildings;
+  const rooms = data?.rooms;
   const meta = data?.meta;
 
   const deleteHandler = async (id: string) => {
     message.loading("Deleting...");
     try {
-      await deleteBuilding(id);
-      message.success("Building Deleted successfully");
+      const res = await deleteRoom(id);
+      if (res) {
+        message.success("Room Deleted successfully");
+      }
     } catch (err: any) {
       message.error(err.message);
     }
@@ -54,16 +55,21 @@ const ManageBuildingPage = () => {
 
   const columns = [
     {
-      title: "Title",
-      dataIndex: "title",
+      title: "Room No",
+      dataIndex: "roomNumber",
+      sorter: true,
     },
     {
-      title: "CreatedAt",
-      dataIndex: "createdAt",
-      render: function (data: any) {
-        return data && dayjs(data).format("MMM D, YYYY hh:mm A");
-      },
+      title: "Floor",
+      dataIndex: "floor",
       sorter: true,
+    },
+    {
+      title: "Building",
+      dataIndex: "building",
+      render: function (data: any) {
+        return <>{data?.title}</>;
+      },
     },
     {
       title: "Action",
@@ -109,15 +115,16 @@ const ManageBuildingPage = () => {
             link: "/admin",
           },
           {
-            label: "building",
-            link: "/admin/building",
+            label: "room",
+            link: "/admin/room",
           },
         ]}
       />
 
-      <h1 style={{ margin: "10px 0" }}>Building list</h1>
-      <Link href="/admin/building/create">
-        <Button type="primary">Create building</Button>
+      {/* title bar */}
+      <h1 style={{ margin: "10px 0" }}>Room list</h1>
+      <Link href="/admin/room/create">
+        <Button type="primary">Create Room</Button>
       </Link>
       <div style={{ margin: "10px 0px" }}>
         {/* search field */}
@@ -139,7 +146,7 @@ const ManageBuildingPage = () => {
       <ReusableTable
         loading={isLoading}
         columns={columns}
-        dataSource={buildings}
+        dataSource={rooms}
         pageSize={size}
         totalPages={meta?.total}
         showSizeChanger={true}
@@ -152,4 +159,4 @@ const ManageBuildingPage = () => {
   );
 };
 
-export default ManageBuildingPage;
+export default RoomPage;
