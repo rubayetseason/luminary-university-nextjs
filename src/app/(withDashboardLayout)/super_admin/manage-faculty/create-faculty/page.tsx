@@ -10,7 +10,7 @@ import { Button } from "antd";
 import FormSelectField from "@/components/forms/FromSelect";
 import {
   bloodGroupOptions,
-  departmentOptions,
+  acDepartmentOptions,
   genderOptions,
 } from "@/constants/formOptions";
 import FormDatePicker from "@/components/forms/DatePicker";
@@ -136,7 +136,7 @@ const CreateFacultyRoute = () => {
                 <FormSelectField
                   name="faculty.academicFaculty"
                   label="Academic Faculty"
-                  options={departmentOptions}
+                  options={acDepartmentOptions}
                 />
               </div>
               <div
@@ -144,7 +144,7 @@ const CreateFacultyRoute = () => {
                   marginBottom: "10px",
                 }}
               >
-                <UploadImage></UploadImage>
+                <UploadImage name="file"></UploadImage>
               </div>
             </div>
           </div>

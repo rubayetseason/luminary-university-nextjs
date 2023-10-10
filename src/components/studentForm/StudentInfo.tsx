@@ -1,14 +1,12 @@
 "use client";
-import {
-  acDepartmentOptions,
-  acSemesterOptions,
-  facultyOptions,
-  genderOptions,
-} from "@/constants/formOptions";
+import { acSemesterOptions, genderOptions } from "@/constants/formOptions";
 import FormInput from "../forms/FormInput";
 import FormSelectField from "../forms/FromSelect";
 import styles from "./formInfo.module.css";
 import UploadImage from "../forms/uploadImage";
+import AcademicFacultyField from "../forms/AcademicFacultyOptions";
+import AcademicDepartmentField from "../forms/AcademicDepartmentOptions";
+import AcademicSemesterField from "../forms/AcademicSemesterOptions";
 
 const StudentInfo = () => {
   return (
@@ -86,39 +84,30 @@ const StudentInfo = () => {
               marginBottom: "10px",
             }}
           >
-            <FormSelectField
-              size="large"
+            <AcademicSemesterField
               name="student.academicSemester"
-              options={acSemesterOptions}
               label="Semester"
-              placeholder="Select semester"
-            />
+            ></AcademicSemesterField>
           </div>
           <div
             style={{
               marginBottom: "10px",
             }}
           >
-            <FormSelectField
-              size="large"
-              name="student.academicFaculty"
-              options={facultyOptions}
-              label="Faculty"
-              placeholder="Select faculty"
-            />
+            <AcademicFacultyField
+              name="faculty.academicFaculty"
+              label="Academic Faculty"
+            ></AcademicFacultyField>
           </div>
           <div
             style={{
               marginBottom: "10px",
             }}
           >
-            <FormSelectField
-              size="large"
-              name="student.academicDepartment"
-              options={acDepartmentOptions}
-              label="Department"
-              placeholder="Select academic department"
-            />
+            <AcademicDepartmentField
+              name="faculty.academicDepartment"
+              label="Academic Department"
+            ></AcademicDepartmentField>
           </div>
           <div
             style={{
@@ -138,7 +127,7 @@ const StudentInfo = () => {
               marginBottom: "10px",
             }}
           >
-            <UploadImage></UploadImage>
+            <UploadImage name="file"></UploadImage>
           </div>
         </div>
       </div>
