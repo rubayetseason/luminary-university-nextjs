@@ -72,6 +72,7 @@ const CreateStudentRoute = () => {
       />
       <h1 style={{ margin: "10px 0px" }}>Create student</h1>
       <StepperForm
+        persistKey="student-create-form"
         submitHandler={(value) => handleStudentSubmit(value)}
         steps={steps}
       ></StepperForm>

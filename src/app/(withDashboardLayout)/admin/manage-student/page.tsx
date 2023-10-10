@@ -60,14 +60,6 @@ const ManageStudentPage = () => {
       dataIndex: "email",
     },
     {
-      title: "Created at",
-      dataIndex: "createdAt",
-      render: function (data: any) {
-        return data && dayjs(data).format("MMM D, YYYY hh:mm A");
-      },
-      sorter: true,
-    },
-    {
       title: "Contact no.",
       dataIndex: "contactNo",
     },
