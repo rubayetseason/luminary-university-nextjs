@@ -95,7 +95,7 @@ const StudentInfo = () => {
             }}
           >
             <AcademicFacultyField
-              name="faculty.academicFaculty"
+              name="student.academicFaculty"
               label="Academic Faculty"
             ></AcademicFacultyField>
           </div>
@@ -105,7 +105,7 @@ const StudentInfo = () => {
             }}
           >
             <AcademicDepartmentField
-              name="faculty.academicDepartment"
+              name="student.academicDepartment"
               label="Academic Department"
             ></AcademicDepartmentField>
           </div>

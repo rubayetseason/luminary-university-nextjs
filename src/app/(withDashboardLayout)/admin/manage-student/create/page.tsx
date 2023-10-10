@@ -36,6 +36,7 @@ const CreateStudentRoute = () => {
 
   const handleStudentSubmit = async (values: any) => {
     const obj = { ...values };
+
     const file = obj["file"];
     delete obj["file"];
     const data = JSON.stringify(obj);
@@ -45,6 +46,7 @@ const CreateStudentRoute = () => {
     message.loading("Creating...");
     try {
       const res = await addStudentWithFormData(formData);
+      console.log(res);
 
       if (!!res) {
         message.success("Student created successfully");
