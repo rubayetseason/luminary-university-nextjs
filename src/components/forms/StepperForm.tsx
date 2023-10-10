@@ -32,7 +32,7 @@ const StepperForm = ({
   const [savedValues, setSavedValues] = useState(
     getFromLocalStorage(persistKey)
       ? JSON.parse(getFromLocalStorage(persistKey) as string)
-      : ''
+      : ""
   );
 
   useEffect(() => {
@@ -49,7 +49,7 @@ const StepperForm = ({
 
   const items = steps.map((item) => ({ key: item.title, title: item.title }));
 
-  const methods = useForm({defaultValues: savedValues});
+  const methods = useForm({ defaultValues: savedValues });
   const watch = methods.watch();
 
   useEffect(() => {
@@ -64,6 +64,7 @@ const StepperForm = ({
     submitHandler(data);
     reset();
     setToLocalStorage("step", JSON.stringify({ step: 0 }));
+    setToLocalStorage(persistKey, JSON.stringify({}));
     navigateLink && router.push(navigateLink);
   };
 
