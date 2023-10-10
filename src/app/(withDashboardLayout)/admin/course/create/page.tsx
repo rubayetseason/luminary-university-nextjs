@@ -12,25 +12,25 @@ const CreateCoursePage = () => {
   const { data, isLoading } = useCoursesQuery({ limit: 10, page: 1 });
 
   const courses = data?.courses;
-  const coursesOptions = courses?.map((course) => {
-    return {
-      label: course?.title,
-      value: course?.id,
-    };
-  });
+  //   const coursesOptions = courses?.map((course) => {
+  //     return {
+  //       label: course?.title,
+  //       value: course?.id,
+  //     };
+  //   });
 
   const onSubmit = async (data: any) => {
     data.credits = parseInt(data?.credits);
 
-    const coursePreRequisitesOptions = data?.coursePreRequisites?.map(
-      (id: string) => {
-        return {
-          courseId: id,
-        };
-      }
-    );
+    // const coursePreRequisitesOptions = data?.coursePreRequisites?.map(
+    //   (id: string) => {
+    //     return {
+    //       courseId: id,
+    //     };
+    //   }
+    // );
 
-    data.coursePreRequisites = coursePreRequisitesOptions;
+    // data.coursePreRequisites = coursePreRequisitesOptions;
 
     message.loading("Creating...");
     try {
