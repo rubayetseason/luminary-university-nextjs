@@ -1,6 +1,5 @@
 "use client";
-// import banner from "../../assets/Computer login-bro.png";
-import banner from "../../assets/SignIn.gif";
+import banner from "../../assets/Login.gif";
 import Image from "next/image";
 import Form from "@/components/forms/Form";
 import styles from "../../app/page.module.css";
