@@ -1,6 +1,5 @@
 "use client";
 
-import AcademicDepartmentField from "@/components/forms/AcademicDepartmentOptions";
 import Form from "@/components/forms/Form";
 import FormInput from "@/components/forms/FormInput";
 import FormSelectField, { SelectOptions } from "@/components/forms/FromSelect";
@@ -12,6 +11,7 @@ import { Button, message } from "antd";
 import { useState } from "react";
 import styles from "./createSection.module.css";
 import FormDynamicFields from "@/components/forms/FormDynamicFields";
+import AcademicDepartmentIDOptions from "@/components/forms/AcademicDepartmentIDOptions";
 
 const CreateOfferedCourseSectionPage = () => {
   const [addOfferedCourseSection] = useAddOfferedCourseSectionMutation();
@@ -85,11 +85,11 @@ const CreateOfferedCourseSectionPage = () => {
               />
             </div>
             <div style={{ margin: "10px 0px" }}>
-              <AcademicDepartmentField
+              <AcademicDepartmentIDOptions
                 name="academicDepartment"
                 label="Academic Department"
                 onChange={(el) => setAcDepartmentId(el)}
-              ></AcademicDepartmentField>
+              ></AcademicDepartmentIDOptions>
             </div>
             <div style={{ margin: "10px 0px" }}>
               <FormSelectField

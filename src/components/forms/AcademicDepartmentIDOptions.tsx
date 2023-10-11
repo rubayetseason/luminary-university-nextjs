@@ -1,15 +1,18 @@
 import { useAcademicDepartmentsQuery } from "@/redux/api/academic/departmentApi";
 import FormSelectField, { SelectOptions } from "./FromSelect";
 
-type AcademicDepartmentFieldProps = {
+
+type ACDepartmentIDFieldProps = {
   name: string;
   label?: string;
+  onChange: (e: any) => void;
 };
 
-const AcademicDepartmentField = ({
+const AcademicDepartmentIDOptions = ({
   name,
   label,
-}: AcademicDepartmentFieldProps) => {
+  onChange,
+}: ACDepartmentIDFieldProps) => {
   const { data, isLoading } = useAcademicDepartmentsQuery({
     limit: 100,
     page: 1,
@@ -28,8 +31,9 @@ const AcademicDepartmentField = ({
       name={name}
       label={label}
       options={acDepartmentOptions as SelectOptions[]}
+      handleChange={(e) => onChange(e)}
     />
   );
 };
 
-export default AcademicDepartmentField;
+export default AcademicDepartmentIDOptions;
