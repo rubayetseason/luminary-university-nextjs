@@ -106,14 +106,6 @@ export const SidebarItems = (role: string) => {
           ),
           key: `/${role}/offered-course-section`,
         },
-        {
-          label: (
-            <Link href={`/${role}/offered-course-schedule`}>
-              Course Schedules
-            </Link>
-          ),
-          key: `/${role}/offered-course-schedule`,
-        },
       ],
     },
   ];

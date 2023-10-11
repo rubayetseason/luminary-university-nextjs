@@ -4,11 +4,13 @@ import FormSelectField, { SelectOptions } from "./FromSelect";
 type AcademicDepartmentFieldProps = {
   name: string;
   label?: string;
+  onChange: (e:any) => void;
 };
 
 const AcademicDepartmentField = ({
   name,
   label,
+  onChange
 }: AcademicDepartmentFieldProps) => {
   const { data, isLoading } = useAcademicDepartmentsQuery({
     limit: 100,
@@ -27,6 +29,7 @@ const AcademicDepartmentField = ({
       name={name}
       label={label}
       options={acDepartmentOptions as SelectOptions[]}
+      handleChange={(e) => onChange(e)}
     />
   );
 };

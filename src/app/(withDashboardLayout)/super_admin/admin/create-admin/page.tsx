@@ -34,16 +34,21 @@ const CreateAdminRoute = () => {
     });
 
   const onSubmit = async (values: any) => {
-    //values has password, adminInfo, file --> set all in obj
+    //values has password, adminInfo, file --> add all in obj
     const obj = { ...values };
-    //take file sperately
+    //take Img file sperately file variable
     const file = obj["file"];
-    //delete file from obj
+    //delete img file from obj
     delete obj["file"];
+    //stringify the obj object
     const data = JSON.stringify(obj);
-    //append everything in formData
+
     const formData = new FormData();
+    //append everything in formData
+
+    //for image
     formData.append("file", file as Blob);
+    //for admin data
     formData.append("data", data);
     message.loading("Creating admin...");
     try {
