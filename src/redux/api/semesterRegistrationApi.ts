@@ -60,6 +60,65 @@ export const semesterRegistrationApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: [tagTypes.semesterRegistration],
     }),
+
+    //!get my registration
+    myRegistration: build.query({
+      query: () => ({
+        url: `${BASE_SEMESTER_REGISTRATION}/get-my-registration`,
+        method: "GET",
+      }),
+      providesTags: [tagTypes.courseRegistration],
+    }),
+    //!start my registration
+    startRegistration: build.mutation({
+      query: () => ({
+        url: `${BASE_SEMESTER_REGISTRATION}/start-registration`,
+        method: "POST",
+      }),
+    }),
+    //!get my registration courses
+    mySemesterRegistrationCourses: build.query({
+      query: () => ({
+        url: `${BASE_SEMESTER_REGISTRATION}/get-my-semester-courses
+				`,
+        method: "GET",
+      }),
+      providesTags: [tagTypes.courseRegistration],
+    }),
+    //!enroll into course
+    enrollIntoCourse: build.mutation({
+      query: (data) => ({
+        url: `${BASE_SEMESTER_REGISTRATION}/enroll-into-course`,
+        method: "POST",
+        data,
+      }),
+      invalidatesTags: [tagTypes.courseRegistration],
+    }),
+    //!withdraw from course
+    withdrawFromCourse: build.mutation({
+      query: (data) => ({
+        url: `${BASE_SEMESTER_REGISTRATION}/withdraw-from-course`,
+        method: "POST",
+        data,
+      }),
+      invalidatesTags: [tagTypes.courseRegistration],
+    }),
+    //!confirm my registration
+    confirmMyRegistration: build.mutation({
+      query: () => ({
+        url: `${BASE_SEMESTER_REGISTRATION}/confirm-my-registration`,
+        method: "POST",
+      }),
+      invalidatesTags: [tagTypes.courseRegistration],
+    }),
+    //!start new semester
+    startNewSemester: build.mutation({
+      query: (id) => ({
+        url: `${BASE_SEMESTER_REGISTRATION}/${id}/start-new-semester`,
+        method: "POST",
+      }),
+      invalidatesTags: [tagTypes.courseRegistration],
+    }),
   }),
 });
 
@@ -69,6 +128,14 @@ export const {
   useAddSemesterRegistrationsMutation,
   useDeleteSemesterRegistrationsMutation,
   useUpdateSemesterRegistrationsMutation,
+
+  useMyRegistrationQuery, //!get my registration
+  useStartRegistrationMutation, //!start my registration
+  useMySemesterRegistrationCoursesQuery, //!get my registration courses
+  useEnrollIntoCourseMutation, //!enroll into course
+  useWithdrawFromCourseMutation, //!withdraw from course
+  useConfirmMyRegistrationMutation, //!confirm my registration
+  useStartNewSemesterMutation, //!start new semester
 } = semesterRegistrationApi;
 
 export default semesterRegistrationApi;

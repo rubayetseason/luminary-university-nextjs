@@ -3,13 +3,15 @@ import { useDebounced } from "@/hooks/hooks";
 import {
   useDeleteSemesterRegistrationsMutation,
   useSemesterRegistrationsQuery,
+  useStartNewSemesterMutation,
 } from "@/redux/api/semesterRegistrationApi";
 import {
   DeleteOutlined,
   EditOutlined,
   ReloadOutlined,
+  PlayCircleOutlined,
 } from "@ant-design/icons";
-import { Button, Input, message } from "antd";
+import { Button, Input, Tooltip, message } from "antd";
 import { useState } from "react";
 import dayjs from "dayjs";
 import BreadCrumb from "@/components/ui/BreadCrumb";
@@ -57,6 +59,16 @@ const SemesterRegistrationPage = () => {
     }
   };
 
+  const [startNewSemester] = useStartNewSemesterMutation();
+  const handleStartSemester = async (id: string) => {
+    try {
+      const res = await startNewSemester(id).unwrap();
+      message.success(res);
+    } catch (err: any) {
+      message.error(err?.message);
+    }
+  };
+
   const columns = [
     {
       title: "Start Date",
@@ -92,6 +104,29 @@ const SemesterRegistrationPage = () => {
       render: function (data: any) {
         return (
           <>
+            <Link href={`/admin/semester-registration/edit/${data?.id}`}>
+              <Button
+                style={{
+                  margin: "0px 5px",
+                }}
+                type="primary"
+              >
+                <EditOutlined />
+              </Button>
+            </Link>
+            {data?.status === "ENDED" && (
+              <Tooltip title="Start Semester" placement="bottom">
+                <Button
+                  type="primary"
+                  onClick={() => handleStartSemester(data?.id)}
+                  style={{
+                    margin: "0px 5px",
+                  }}
+                >
+                  <PlayCircleOutlined />
+                </Button>
+              </Tooltip>
+            )}
             <Button
               onClick={() => deleteHandler(data?.id)}
               type="primary"

@@ -14,7 +14,7 @@ const { Header: AntHeader } = Layout;
 
 import React from "react";
 import { useRouter } from "next/navigation";
-import { removeUserInfo } from "@/services/auth.services";
+import { getUserInfo, removeUserInfo } from "@/services/auth.services";
 import { authKey } from "@/constants/authKey";
 
 const Header = () => {
@@ -28,6 +28,8 @@ const Header = () => {
     removeUserInfo(authKey);
     router.push("/");
   };
+
+  const { role } = getUserInfo() as any;
 
   const items: MenuProps["items"] = [
     {
@@ -50,6 +52,13 @@ const Header = () => {
           paddingRight: "10px",
         }}
       >
+        <p
+          style={{
+            margin: "0px 5px",
+          }}
+        >
+          {role}
+        </p>
         <Dropdown menu={{ items }}>
           <a>
             <Space wrap size={16}>
