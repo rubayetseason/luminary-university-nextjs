@@ -97,7 +97,7 @@ const ViewPreregistrationPage = () => {
                           }}
                           colSpan={3}
                         >
-                          class schedule
+                          Class schedule
                         </th>
 
                         {section?.offeredCourseClassSchedules?.map(
