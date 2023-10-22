@@ -64,7 +64,7 @@ const ViewPreregistrationPage = () => {
         label: availableCourse?.course?.title,
         isTaken: availableCourse.isTaken,
         children: (
-          <table style={{ padding: "0px 10px", borderSpacing: "10px 15px" }}>
+          <table style={{ padding: "0px 0px", borderSpacing: "0px 0px" }}>
             {availableCourse?.offeredCourseSections?.map(
               (section: any, index: number) => {
                 return (
