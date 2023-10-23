@@ -185,7 +185,12 @@ const ViewPreregistrationPage = () => {
   const base = "student";
   return (
     <>
-      <BreadCrumb items={[{ label: `${base}`, link: `/${base}` }]} />
+      <BreadCrumb
+        items={[
+          { label: `${base}`, link: `/${base}` },
+          { label: `Pre-registration`, link: `/${base}/pre-registration` },
+        ]}
+      />
       <h1 style={{ margin: "10px 0" }}>Course Pre-registration</h1>
       <CollapseComponent
         items={availableCourses}
